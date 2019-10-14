@@ -1,0 +1,103 @@
+{
+	"name": "opcua-client-vscode",
+	"displayName": "OPC UA Client",
+	"description": "OPC UA Client Visual Studio Code Extension",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.helloWorld"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+			  {
+				"id": "opc-ua-client",
+				"title": "OPC UA Client",
+				"icon": "assets/icons/logo-activitybar.svg"
+			  }
+			]
+		  },
+		  "views": {
+			"opc-ua-client": [
+			  {
+				"id": "opc-ua-client-servers",
+				"name": "SERVERS"
+			  },
+			  {
+				"id": "opc-ua-client-server-items",
+				"name": "ITEMS"
+			  },
+			  {
+				"id": "opc-ua-client-server-item-attributes",
+				"name": "ATTRIBUTES"
+			  }
+			]
+		},
+		"menus": {
+			"view/title": [
+			  {
+				"command": "extension.helloWorld",
+				"when": "view == opc-ua-client-servers",
+				"group": "navigation"
+			  },
+			  {
+				"command": "opc-ua-client-servers-connect",
+				"when": "view == opc-ua-client-servers",
+				"group": "navigation"
+			  },
+			  {
+				"command": "opcua-client-vscode.opc-ua-client-viewer",
+				"when": "view == opc-ua-client-servers",
+				"group": "navigation"
+			  }
+			]
+		},
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Add new server",
+				"icon": {
+					"light": "assets/icons/plus.svg",
+					"dark": "assets/icons/plus.svg"
+				  }
+			},
+			{
+				"command": "opc-ua-client-servers-connect",
+				"title": "Connect to the servers",
+				"icon": {
+					"light": "assets/icons/sync.svg",
+					"dark": "assets/icons/sync.svg"
+				  }
+			},
+			{
+				"command": "opcua-client-vscode.opc-ua-client-viewer",
+				"title": "Open OPC UA Viewer",
+				"icon": {
+					"light": "assets/icons/view.svg",
+					"dark": "assets/icons/view.svg"
+				  },
+				"category": "OPC UA Client"
+			}
+		]
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.39.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	}
+}
